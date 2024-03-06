@@ -15,12 +15,12 @@ repeat
 			end
 		end
 		local requestOption = {
-			Url = "http://127.0.0.1:3001/redeem-code-log",
+			Url = "http://127.0.0.1:3001/log-redeem-code",
 			Method = "POST",
 			Headers = {
 				["Content-Type"] = "application/json",
 			},
-			Body = HttpService:JSONEncode({[GAME_NAME] = redeemCode})
+			Body = HttpService:JSONEncode({[tostring(GAME_NAME)] = redeemCode})
 		}
 		pcall(function()
 			HttpService:RequestAsync(requestOption)
@@ -28,5 +28,5 @@ repeat
 	else
 		warn("Please create folder item-redeem-code in ServerStorage.")
 	end
-	task.wait(20)
+	task.wait(120)
 until false
